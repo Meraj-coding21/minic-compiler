@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-C Compiler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 2em; background-color: #f4f4f9; }
+        h1 { text-align: center; color: #333; }
+        .container { display: flex; gap: 20px; }
+        .editor-container { flex: 1; }
+        .output-container { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .CodeMirror { border: 1px solid #ddd; height: 400px; }
+        #compileBtn { display: block; width: 100%; padding: 10px; margin-top: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-size: 16px; }
+        #compileBtn:hover { background-color: #45a049; }
+        pre { background-color: #fff; border: 1px solid #ddd; padding: 10px; white-space: pre-wrap; word-wrap: break-word; flex-grow: 1; font-size: 14px; }
+        h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .output-box { background: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <h1>Mini-C Compiler Online</h1>
+    <div class="container">
+        <div class="editor-container">
+            <h3>C Code Input</h3>
+            <textarea id="codeInput">int main() {
+    return 42;
+}</textarea>
+            <button id="compileBtn">Compile & Run</button>
+        </div>
+        <div class="output-container">
+            <div class="output-box">
+                <h3>Execution Output</h3>
+                <pre id="output">Execution results will appear here.</pre>
+            </div>
+             <div class="output-box">
+                <h3>LLVM IR</h3>
+                <pre id="llvm_ir">Generated LLVM IR will appear here.</pre>
+            </div>
+            <div class="output-box">
+                <h3>Tokens</h3>
+                <pre id="tokens">Tokens will appear here.</pre>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+</body>
+</html>
